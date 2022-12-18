@@ -10,6 +10,12 @@
 
 This repository provides a scaffolding project to start using TypeScript in your k6 scripts.
 
+## Node 18 warning
+
+It doesn't work without `--openssl-legacy-provider`
+
+See [StackOverflow](https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported) for details.
+
 ## Rationale
 
 While JavaScript is great for a myriad of reasons, one area where it fall short is type safety and developer ergonomics. It's perfectly possible to write JavaScript code that will look OK and behave OK until a certain condition forces the executor into a faulty branch.
@@ -49,7 +55,7 @@ $ yarn install
 To run a test written in TypeScript, we first have to transpile the TypeScript code into JavaScript and bundle the project
 
 ```bash
-$ yarn webpack
+$ yarn build
 ```
 
 This command creates the final test files to the `./dist` folder.
