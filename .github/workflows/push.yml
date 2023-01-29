@@ -22,7 +22,7 @@ jobs:
         run: node --version
 
       - name: Transpile and bundle test script
-        run: yarn
+        run: yarn build
 
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
