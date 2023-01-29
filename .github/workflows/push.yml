@@ -18,9 +18,11 @@ jobs:
         run: |
           yarn --frozen-lockfile
 
+      - name: Check version
+        run: node --version
+
       - name: Transpile and bundle test script
-        run: |
-          yarn build
+        run: yarn
 
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
