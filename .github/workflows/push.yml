@@ -14,12 +14,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          yarn --frozen-lockfile
 
-      - name: Transpile and bundle test script
+      - name: build with node 18
         run: |
+          echo "Using node.js $(node -v) in this action"
+          echo "Installing nvm"
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+          source ~/.nvm/nvm.sh
+          echo "Setting default node version to 18"
+          nvm install 18
+          nvm use 18
+          echo "Using node.js $(node -v) in this action"
+          node --version
+          yarn --frozen-lockfile
           yarn build
 
       - name: Run local k6 test
