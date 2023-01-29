@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node.js 18
+      - name: build with node 18
         run: |
           echo "Using node.js $(node -v) in this action"
           echo "Installing nvm"
@@ -25,16 +25,9 @@ jobs:
           nvm install 18
           nvm use 18
           echo "Using node.js $(node -v) in this action"
-
-      - name: Check version
-        run: node --version
-
-      - name: Install dependencies
-        run: |
+          node --version
           yarn --frozen-lockfile
-
-      - name: Transpile and bundle test script
-        run: yarn build
+          yarn build
 
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
